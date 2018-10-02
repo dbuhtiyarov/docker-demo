@@ -1,15 +1,13 @@
+### Repo contains java code for Springboot and Dockerfile  
 
-## Use NPM for js lib download
-`cd src/main/resources/static && npm install`
+## Docker build
+`docker build --pull=true --force-rm -t ${REGISTY}/${REPO}:${VERSION} .`
+Example: docker build --pull=true --force-rm -t dmitrybuhtiyarov/docker-demo:1.0 .
 
-## Maven build
-`mvn clean package`
+## Docker run
+`docker run --name demo -p ${HOST_PORT}:${CONTAINER_PORT} -d ${IMAGE_NAME}:${VERSION}`
+Example: docker run --name demo -p 80:8080 -d dmitrybuhtiyarov/docker-demo:1.0
 
-## Gradle build
-`gradle clean build`
-
-## Maven run
-`mvn spring-boot:run`
-
-
-
+## Docker push (upload to registry)
+`docker push ${IMAGE_NAME}:${VERSION}`
+Example: docker push dmitrybuhtiyarov/docker-demo:1.0
