@@ -1,5 +1,5 @@
-# Architecture
-![Architecture](jpg/Architecture.jpg"Title")
+## Architecture
+![Architecture](jpg/Architecture.jpg)
 
 
 1) On the ELK host go to `elk` directory and start ELK stack with Docker compose:
