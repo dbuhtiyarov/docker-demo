@@ -1,5 +1,6 @@
 # Repo contains java code for Springboot and Dockerfile  
 
+## Workflow
 ## Docker build
 `docker build --pull=true --force-rm -t ${REGISTY}/${REPO}:${VERSION} .`
 <br/>`Example:` docker build --pull=true --force-rm -t dmitrybuhtiyarov/docker-demo:1.0 .
