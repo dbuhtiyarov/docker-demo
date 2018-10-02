@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>Demo App</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="/style/main.css"></link>
+    <link href='//fonts.googleapis.com/css?family=Alex Brush' rel='stylesheet'></link>
+</head>
+<body onload="init()">
+
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand exp-font">
+                        Console
+                    </a>
+                    <p class="navbar-text random-name">
+
+                    </p>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="alert alert-success" id="success" role="alert" style="display: none;">
+        <button type="button" class="close" onclick="hide()" >
+            <span aria-hidden="true">×</span>
+        </button>
+        Success
+    </div>
+    <div class="alert alert-danger" id="fail" role="alert" style="display: none;">
+        <button type="button" class="close" onclick="hide()">
+            <span aria-hidden="true">×</span>
+        </button>
+        Fail
+    </div>
+
+    <div class="white-space"></div>
+
+    <div class="wrapper">
+        <div class="col-xs-6">
+            <img class="img-console" src="/01.jpg"/>
+        </div>
+        <div class="col-xs-6">
+            <div class="separator">
+                <button class="btn btn-success btn-lg" onclick="createThreads(1);">
+                    Create thread
+                </button>
+                <button class="btn btn-warning btn-lg" onclick="createThreads(100);">
+                    Create 100 threads
+                </button>
+                <button class="btn btn-danger btn-lg" onclick="createThreads(250);">
+                    Create 250 threads
+                </button>
+            </div>
+            <div class="separator">
+                <button class="btn btn-primary btn-lg" onclick="gc()">
+                    Garbage Collection
+                </button>
+            </div>
+            <div class="separator">
+                <button class="btn btn-warning btn-lg" onclick="ramLoad(100)">
+                    Generate 100MiB Object
+                </button>
+                <button class="btn btn-danger btn-lg" onclick="ramLoad(1024)">
+                    Generate 1GiB Object
+                </button>
+            </div>
+            <div class="separator">
+                <button class="btn btn-danger btn-lg" onclick="cpuLoad()">
+                    Generate CPU Load
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Copyright 2k17 hackathon distributed under WTFPL Public License. Commit SHA1: 
+    </footer>
+
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/script/main.js"></script>
+</body>
+</html>

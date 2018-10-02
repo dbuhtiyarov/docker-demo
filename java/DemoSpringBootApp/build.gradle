@@ -1,0 +1,27 @@
+plugins {
+    id 'org.springframework.boot' version '1.5.4.RELEASE'
+}
+
+repositories {
+    flatDir {
+        dirs "lib"
+    }
+
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencyManagement {
+ imports {
+ mavenBom 'org.springframework.boot:spring-boot-starter-parent:1.5.3.RELEASE'
+ }
+}
+
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-web:1.5.4.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-test:1.5.4.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-actuator:1.5.4.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-thymeleaf:1.5.4.RELEASE'
+    compile 'org.junit.jupiter:junit-jupiter-engine:5.0.0-M5'
+    compile 'com.moelholm:prometheus-spring-boot-starter:1.0.1'
+}
