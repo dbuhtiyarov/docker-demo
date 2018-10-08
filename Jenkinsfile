@@ -3,6 +3,7 @@ node {
 
         imageName = "dmitrybuhtiyarov/docker-demo:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
         DockerfilePath = "java/DemoSpringBootApp/"
+        appname = "demo"
 
         stage('Build')
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
@@ -11,9 +12,9 @@ node {
         customImage.push('latest')    
     }
         stage('Deploy') {
-        sh "docker rm -f demo"
+        sh "docker rm -f $appname"
         sh "docker pull $imageName"
-        sh "docker run --name demo -p 8080:8080 -d $imageName"
-        sh "docker ps -a --filter 'name=demo'"
+        sh "docker run --name $appname -p 8080:8080 -d $imageName"
+        sh "docker ps -a --filter 'name=$appname'"
     }
 }
