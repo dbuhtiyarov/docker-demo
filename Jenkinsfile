@@ -2,10 +2,11 @@ node {
         checkout scm
 
         imageName = "dmitrybuhtiyarov/docker-demo:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
+        DockerfilePath = "java/DemoSpringBootApp/"
 
         stage('Build')
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
-        def customImage = docker.build("$imageName", "java/DemoSpringBootApp/")
+        def customImage = docker.build("$imageName", "$DockerfilePath")
         customImage.push()
         customImage.push('latest')    
     }
