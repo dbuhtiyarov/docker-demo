@@ -5,7 +5,7 @@ node {
 
         stage('Build')
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
-        def customImage = docker.build("$imageName.read", "java/DemoSpringBootApp/")
+        def customImage = docker.build("$imageName", "java/DemoSpringBootApp/")
         customImage.push()
         customImage.push('latest')    
     }
