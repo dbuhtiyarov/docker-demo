@@ -1,7 +1,7 @@
 node {
         checkout scm
 
-        def imageName = dmitrybuhtiyarov/docker-demo:${env.BRANCH_NAME}.${env.BUILD_NUMBER}
+        imageName = dmitrybuhtiyarov/docker-demo:${env.BRANCH_NAME}.${env.BUILD_NUMBER}
 
         stage('Build')
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
