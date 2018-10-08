@@ -1,17 +1,18 @@
 node {
-        stage('Clone sources') {
-        git url: 'https://github.com/dbuhtiyarov/docker-demo.git'
-    }
+        checkout scm
+
+        def imageName = dmitrybuhtiyarov/docker-demo:${env.BRANCH_NAME}.${env.BUILD_NUMBER}
+
         stage('Build')
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
-        def customImage = docker.build("dmitrybuhtiyarov/docker-demo:2.${env.BUILD_NUMBER}", "java/DemoSpringBootApp/")
+        def customImage = docker.build("imageName.read", "java/DemoSpringBootApp/")
         customImage.push()
         customImage.push('latest')    
     }
         stage('Deploy') {
         sh "docker rm -f demo"
-        sh "docker pull dmitrybuhtiyarov/docker-demo:2.${env.BUILD_NUMBER}"
-        sh "docker run --name demo -p 8080:8080 -d dmitrybuhtiyarov/docker-demo:2.${env.BUILD_NUMBER}"
+        sh "docker pull $imageName"
+        sh "docker run --name demo -p 8080:8080 -d $imageName"
         sh "docker ps -a --filter 'name=demo'"
     }
 }
