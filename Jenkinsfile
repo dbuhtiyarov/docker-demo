@@ -4,12 +4,10 @@ node {
         imageName = "dmitrybuhtiyarov/docker-demo:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
         DockerfilePath = "java/DemoSpringBootApp/"
         appname = "demo"
-        def customImage = docker.build("$imageName", "$DockerfilePath")
 
-        stage('Build') {
-        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') 
-    }
-        stage('Push') {
+        stage('Build/Push') 
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
+        def customImage = docker.build("$imageName", "$DockerfilePath")
         customImage.push()
         customImage.push('latest')
     }
