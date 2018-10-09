@@ -5,6 +5,11 @@ node {
         DockerfilePath = "java/DemoSpringBootApp/"
         appname = "demo"
 
+        def env = System.getenv()
+        env.each{
+        println it
+    } 
+
         stage('Build/Push') 
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
         def customImage = docker.build("$imageName", "$DockerfilePath")
