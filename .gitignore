@@ -1,2 +1,2 @@
-elk/elasticsearch/*
-elk/target/*
+docker-compose/elk/elasticsearch/*
+docker-compose/elk/target/*
