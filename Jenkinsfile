@@ -8,8 +8,10 @@ node {
         stage('Build')
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
         def customImage = docker.build("$imageName", "$DockerfilePath")
+    }
+        stage('Push') {
         customImage.push()
-        customImage.push('latest')    
+        customImage.push('latest')
     }
         stage('Deploy') {
         sh "docker rm -f $appname"
