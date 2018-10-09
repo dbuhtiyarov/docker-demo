@@ -1,14 +1,9 @@
 node {
         checkout scm
 
-        imageName = "dmitrybuhtiyarov/docker-demo:${env.BRANCH_NAME}.${env.GIT_COMMIT}"
+        imageName = "dmitrybuhtiyarov/docker-demo:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
         DockerfilePath = "java/DemoSpringBootApp/"
         appname = "demo"
-
-        def env = System.getenv()
-        env.each{
-        println it
-    } 
 
         stage('Build/Push') 
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub_id') {
