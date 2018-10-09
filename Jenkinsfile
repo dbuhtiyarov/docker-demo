@@ -1,7 +1,7 @@
 node {
         checkout scm
 
-        imageName = "dmitrybuhtiyarov/docker-demo:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
+        imageName = "dmitrybuhtiyarov/docker-demo:${env.BRANCH_NAME}.${env.GIT_COMMIT}"
         DockerfilePath = "java/DemoSpringBootApp/"
         appname = "demo"
 
