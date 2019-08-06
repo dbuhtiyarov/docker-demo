@@ -26,8 +26,7 @@ node {
 
     stage('Deploy') {
         sh("""
-            docker rm -f demo
-            docker pull $imageName
+            docker rm -f demo || true && docker pull $imageName
             docker run --name demo -p 8080:8080 -d $imageName
             docker ps -a --filter 'name=demo'
         """);
